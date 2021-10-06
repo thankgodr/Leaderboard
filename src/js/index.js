@@ -6,11 +6,11 @@ let scoreController;
 function buildDemoView() {
   scoreController = new ScoreController([]);
   scoreController.populateDemo(5);
-  let domScoresHolders = document.getElementById('scoreHolder');
+  const domScoresHolders = document.getElementById('scoreHolder');
   scoreController.scoresArray.forEach((element, loopIndex) => {
-    let singleScore = document.createElement('li');
-    singleScore.className = loopIndex % 2 == 0 ? 'list-group-item' : 'list-group-item disabled';
-    let textNode = document.createTextNode(`Name: ${element.name} Score: ${element.score}`);
+    const singleScore = document.createElement('li');
+    singleScore.className = loopIndex % 2 === 0 ? 'list-group-item' : 'list-group-item disabled';
+    const textNode = document.createTextNode(`Name: ${element.name} Score: ${element.score}`);
     singleScore.appendChild(textNode);
     domScoresHolders.appendChild(singleScore);
   });
