@@ -14,8 +14,8 @@
   flex-wrap: wrap;
 }
 
-.row.equal-cols:before,
-.row.equal-cols:after {
+.row.equal-cols::before,
+.row.equal-cols::after {
   display: block;
 }
 
