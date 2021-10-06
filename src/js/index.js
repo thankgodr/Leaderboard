@@ -1,10 +1,8 @@
 import ScoreController from './controllers/scorecontroller';
 import '../css/style.css';
 
-let scoreController;
-
-function buildDemoView() {
-  scoreController = new ScoreController([]);
+const buildDemoView = () => {
+  const scoreController = new ScoreController([]);
   scoreController.populateDemo(5);
   const domScoresHolders = document.getElementById('scoreHolder');
   scoreController.scoresArray.forEach((element, loopIndex) => {
@@ -14,6 +12,6 @@ function buildDemoView() {
     singleScore.appendChild(textNode);
     domScoresHolders.appendChild(singleScore);
   });
-}
+};
 
 buildDemoView();
