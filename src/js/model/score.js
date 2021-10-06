@@ -4,6 +4,7 @@ export default class Score {
   score;
 
   name;
+
   constructor(name, score = 0) {
     this.name = name;
     this.score = score;

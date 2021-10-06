@@ -4,6 +4,7 @@
   bottom: 5px;
   min-width: 132px;
 }
+
 .row.equal-cols {
   display: -webkit-flex;
   display: -ms-flexbox;
