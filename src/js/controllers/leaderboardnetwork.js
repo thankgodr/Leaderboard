@@ -31,7 +31,8 @@ export default class LeaderBoardNetwork {
     result
       .then((outcome) => {
         let arrTemp = outcome.split(' ');
-        this.gameID = arrTemp[3];
+        const [a, b, c] = arrTemp;
+        this.gameID = c;
         this.gameCreated = true;
         localStorage.setItem('gameID', this.gameID);
       })
