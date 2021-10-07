@@ -1,0 +1,75 @@
+import CreateGameRequest from '../request/creategamerequest';
+
+export default class LeaderBoardNetwork {
+  gameID = '';
+
+  gameCreated = false;
+
+  constructor(gameID = '') {
+    this.gameID = gameID;
+    if (gameID.length > 0) {
+      this.gameCreated = true;
+    }
+  }
+
+  fetchScores = () => {
+    const url = 'games/Zl4d7IVkemOTTVg2fUdz/scores/';
+    const res = this.httpgetReques(url);
+    return res
+      .then((outcome) => {
+        return outcome;
+      })
+      .catch((error) => {
+        return error;
+      });
+  };
+
+  postScores = (score, success, failed) => {
+    const url = 'games/' + this.gameID + '/scores/';
+    const result = this.postRequest(url, score);
+    return result
+      .then((outcome) => {
+        return outcome;
+      })
+      .catch((outcome) => {
+        return outcome;
+      });
+  };
+
+  createGame = (name) => {
+    const url = 'games';
+    const requestBody = new CreateGameRequest(name);
+    let result = this.postRequest(url, requestBody);
+    result
+      .then((outcome) => {
+        this.gameID = outcome.split(' ')[3];
+        this.gameCreated = true;
+        localStorage.setItem('gameID', this.gameID);
+      })
+      .catch((e) => {
+        this.gameCreated = false;
+      });
+  };
+
+  postRequest = async (path, body, returnJson = false) => {
+    const end_point = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/';
+    const response = await fetch(end_point + path, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+    const json = returnJson ? await response.json() : await response.text();
+    return json;
+  };
+
+  httpgetReques = async (path, returnJson = false) => {
+    const end_point = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/';
+    console.log(end_point + path);
+    const response = await fetch(end_point + path);
+    const json = returnJson ? await response.json() : await response.text();
+    return json;
+  };
+}
