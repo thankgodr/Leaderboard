@@ -19,7 +19,7 @@ export default class LeaderBoardNetwork {
   };
 
   postScores = (score) => {
-    const url = `games/${this.gameID}/scores/`;
+    const url = `games/Zl4d7IVkemOTTVg2fUdz/scores/`;
     const result = this.postRequest(url, score);
     return result.then((outcome) => outcome).catch((outcome) => outcome);
   };
@@ -31,10 +31,13 @@ export default class LeaderBoardNetwork {
     result
       .then((outcome) => {
         const arrTemp = outcome.split(' ');
-        const [, , c] = arrTemp;
-        this.gameID = c;
-        this.gameCreated = true;
-        localStorage.setItem('gameID', this.gameID);
+        arrTemp.forEach((val, index) => {
+          if (index === 3) {
+            this.gameID = val;
+            this.gameCreated = true;
+            localStorage.setItem('gameID', this.gameID);
+          }
+        });
       })
       .catch(() => {
         this.gameCreated = false;

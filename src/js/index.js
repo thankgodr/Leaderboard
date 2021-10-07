@@ -47,8 +47,9 @@ subitBtn.addEventListener('click', (event) => {
   const inputScore = document.getElementById('score');
   const createScoreRequest = new CreateScoreRequest(inputPlayerName, inputScore);
   const response = leaderboardnetwork.postScores(createScoreRequest);
-  response.then(() => {
+  response.then((outcome) => {
     // Todo Implement view to show status
+    console.log(outcome);
   });
 });
 
