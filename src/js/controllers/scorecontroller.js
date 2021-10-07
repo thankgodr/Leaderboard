@@ -1,4 +1,5 @@
 import Score from '../model/score';
+import CreateScoreRequest from '../request/createscorerequest';
 
 export default class ScoreController {
   constructor(scoresArray) {
@@ -18,8 +19,8 @@ export default class ScoreController {
     }
   }
 
-  addScore(task) {
-    task.updateIndex(this.scoresArray.length);
+  addScore(playerName, playerScore) {
+    const task = new CreateScoreRequest(playerName, playerScore);
     this.scoresArray.push(task);
   }
 }
