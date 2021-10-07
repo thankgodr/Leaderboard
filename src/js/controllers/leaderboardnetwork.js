@@ -36,7 +36,9 @@ export default class LeaderBoardNetwork {
         this.gameCreated = true;
         localStorage.setItem('gameID', this.gameID);
       })
-      .catch(() => (this.gameCreated = false));
+      .catch(() => {
+        this.gameCreated = false;
+      });
   };
 
   postRequest = async (path, body, returnJson = false) => {
