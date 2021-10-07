@@ -19,7 +19,7 @@ export default class LeaderBoardNetwork {
   };
 
   postScores = (score) => {
-    const url = 'games/' + this.gameID + '/scores/';
+    const url = `games/${this.gameID}/scores/`;
     const result = this.postRequest(url, score);
     return result.then((outcome) => outcome).catch((outcome) => outcome);
   };
@@ -27,10 +27,11 @@ export default class LeaderBoardNetwork {
   createGame = (name) => {
     const url = 'games';
     const requestBody = new CreateGameRequest(name);
-    let result = this.postRequest(url, requestBody);
+    const result = this.postRequest(url, requestBody);
     result
       .then((outcome) => {
-        this.gameID = outcome.split(' ')[3];
+        let arrTemp = outcome.split(' ');
+        this.gameID = arrTemp[3];
         this.gameCreated = true;
         localStorage.setItem('gameID', this.gameID);
       })
@@ -38,8 +39,8 @@ export default class LeaderBoardNetwork {
   };
 
   postRequest = async (path, body, returnJson = false) => {
-    const end_point = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/';
-    const response = await fetch(end_point + path, {
+    const endPoint = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/';
+    const response = await fetch(endPoint + path, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -52,9 +53,8 @@ export default class LeaderBoardNetwork {
   };
 
   httpgetReques = async (path, returnJson = false) => {
-    const end_point = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/';
-    console.log(end_point + path);
-    const response = await fetch(end_point + path);
+    const endPoint = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/';
+    const response = await fetch(endPoint + path);
     const json = returnJson ? await response.json() : await response.text();
     return json;
   };
