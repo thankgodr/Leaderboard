@@ -19,7 +19,7 @@ export default class LeaderBoardNetwork {
   };
 
   postScores = (score) => {
-    const url = `games/Zl4d7IVkemOTTVg2fUdz/scores/`;
+    const url = 'games/Zl4d7IVkemOTTVg2fUdz/scores/';
     const result = this.postRequest(url, score);
     return result.then((outcome) => outcome).catch((outcome) => outcome);
   };
