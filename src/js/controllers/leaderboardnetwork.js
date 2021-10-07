@@ -15,25 +15,13 @@ export default class LeaderBoardNetwork {
   fetchScores = () => {
     const url = 'games/Zl4d7IVkemOTTVg2fUdz/scores/';
     const res = this.httpgetReques(url);
-    return res
-      .then((outcome) => {
-        return outcome;
-      })
-      .catch((error) => {
-        return error;
-      });
+    return res.then((outcome) => outcome).catch((error) => error);
   };
 
-  postScores = (score, success, failed) => {
+  postScores = (score) => {
     const url = 'games/' + this.gameID + '/scores/';
     const result = this.postRequest(url, score);
-    return result
-      .then((outcome) => {
-        return outcome;
-      })
-      .catch((outcome) => {
-        return outcome;
-      });
+    return result.then((outcome) => outcome).catch((outcome) => outcome);
   };
 
   createGame = (name) => {
@@ -46,9 +34,7 @@ export default class LeaderBoardNetwork {
         this.gameCreated = true;
         localStorage.setItem('gameID', this.gameID);
       })
-      .catch((e) => {
-        this.gameCreated = false;
-      });
+      .catch(() => (this.gameCreated = false));
   };
 
   postRequest = async (path, body, returnJson = false) => {
