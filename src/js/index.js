@@ -46,10 +46,11 @@ subitBtn.addEventListener('click', (event) => {
   event.preventDefault();
   const inputPlayerName = document.getElementById('name');
   const inputScore = document.getElementById('score');
-  const response = leaderboardnetwork.postScores(
-    new CreateScoreRequest(inputPlayerName, inputScore)
-  );
-  // Todo Implement view to show status
+  const createScoreRequest = new CreateScoreRequest(inputPlayerName, inputScore);
+  const response = leaderboardnetwork.postScores(createScoreRequest);
+  response.then((outcome) => {
+    // Todo Implement view to show status
+  });
 });
 
 refreshBtn.addEventListener('click', () => {
