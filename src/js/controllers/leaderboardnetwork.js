@@ -30,8 +30,8 @@ export default class LeaderBoardNetwork {
     const result = this.postRequest(url, requestBody);
     result
       .then((outcome) => {
-        let arrTemp = outcome.split(' ');
-        const [a, b, c] = arrTemp;
+        const arrTemp = outcome.split(' ');
+        const [, , c] = arrTemp;
         this.gameID = c;
         this.gameCreated = true;
         localStorage.setItem('gameID', this.gameID);

@@ -25,7 +25,6 @@ const refereshList = () => {
 };
 
 const buildDemoView = () => {
-  console.log(gameId);
   if (gameId === null || gameId.length === 0) {
     leaderboardnetwork = new LeaderBoardNetwork();
     this.leaderboardnetwork.createGame('My new game');
@@ -48,7 +47,7 @@ subitBtn.addEventListener('click', (event) => {
   const inputScore = document.getElementById('score');
   const createScoreRequest = new CreateScoreRequest(inputPlayerName, inputScore);
   const response = leaderboardnetwork.postScores(createScoreRequest);
-  response.then((outcome) => {
+  response.then(() => {
     // Todo Implement view to show status
   });
 });
