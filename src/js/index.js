@@ -27,7 +27,7 @@ const refereshList = () => {
 const buildDemoView = () => {
   if (gameId === null || gameId.length === 0) {
     leaderboardnetwork = new LeaderBoardNetwork();
-    leaderboardnetwork.createGame('My new game');
+    leaderboardnetwork.createGame('Rich Game');
   } else {
     leaderboardnetwork = new LeaderBoardNetwork(gameId);
   }

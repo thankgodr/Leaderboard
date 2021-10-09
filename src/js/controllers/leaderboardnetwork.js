@@ -6,20 +6,20 @@ export default class LeaderBoardNetwork {
   gameCreated = false;
 
   constructor(gameID = '') {
-    this.gameID = gameID;
+    this.gameID = 'Zl4d7IVkemOTTVg2fUdz';
     if (gameID.length > 0) {
       this.gameCreated = true;
     }
   }
 
   fetchScores = () => {
-    const url = 'games/Zl4d7IVkemOTTVg2fUdz/scores/';
+    const url = `games/${this.gameID}/scores/`;
     const res = this.httpgetReques(url);
     return res.then((outcome) => outcome).catch((error) => error);
   };
 
   postScores = (score) => {
-    const url = 'games/Zl4d7IVkemOTTVg2fUdz/scores/';
+    const url = `games/${this.gameID}/scores/`;
     const result = this.postRequest(url, score);
     return result.then((outcome) => outcome).catch((outcome) => outcome);
   };
